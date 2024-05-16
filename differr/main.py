@@ -29,6 +29,7 @@ def filter_by_expression(counts, median_threshold, min_threshold):
     # If all reps are 100% matches we don't need to do any tests
     is_variable = counts.groupby(level=2, axis=1).any().sum(1)
     var_filt = is_variable > 1
+    # Outdated use of the groupby function
     per_rep_expr = counts.groupby(level=(0, 1), axis=1).sum()
     per_cond_median_expr = per_rep_expr.groupby(level=0, axis=1).median()
     # The median expression in both conditions must be greater than this value
